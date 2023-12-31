@@ -1,0 +1,102 @@
+% !TEX root = 统计物理.tex
+
+\section[支线1---理想气体]{理想气体}
+\subsection{经典极限---按$\hbar$的展开式}
+
+\subsubsection{配分函数的展开}
+如在配分函数那一节所述:配分函数就是算符$e^{-\beta \hat{H}}$的迹. 由于计算一个算符的迹可以使用任何一组基做展开求得,故为简化,取N个彼此没有相聚作用的粒子所构成的系统来计算.
+
+取波函数集:
+\[\psi=\frac{1}{\sqrt{V^{N}}}\exp(\frac{\mathrm{i}}{\hbar}\sum_i p_iq_i)\]
+其中$V$是粒子系统所处空间的体积,$q_i$是粒子的笛卡尔坐标,$p_i$是相应的动量;编号$i$代表自由度,共$3N$个自由度.
+
+为了使计算变得更加普适,我们假定粒子的质量可能是不同的,于是在动能中,把相对应自由度的质量用$m_i$表示出来.
+
+物体内存在全同粒子,这就意味着要考虑交换效应.这就意味着:波函数相对于粒子的坐标来说应该是对称的或是反对称的(需要看对哪一种粒子).然而这一效应只会使自由能中出现指数型的小项.在考虑量子气体的交换效应时(玻色气体和费米气体),会出现正比于$\hbar^3$的项
+
+\vspace*{0.5cm}
+
+引入符号
+\[I=\exp(-\dfrac{\mathrm{i} }{\hbar}\sum p_i q_i)\exp(-\beta H) \exp(\dfrac{\mathrm{i} }{\hbar}\sum p_i q_i)\]
+
+于是配分函数写成:
+\begin{equation}
+  Z\equiv \int' I \dfrac{\mathrm{d} q\mathrm{d} p}{(2\pi \hbar)^{s}}=\int'I \mathrm{d} \Gamma
+\end{equation}
+积分号加一撇表明对不同的态积分(全同粒子交换相同的态将不予考虑)
+
+\vspace*{0.5cm}
+
+首先计算$I$.先对它求导数:
+\[\dfrac{\partial I}{\partial \beta}=-\exp(-\dfrac{\mathrm{i} }{\hbar}\sum p_i q_i)H\exp(\dfrac{\mathrm{i} }{\hbar}\sum p_i q_i)I\]
+展开上式右侧,利用哈密顿算符的明确表式:
+\[H=-\dfrac{\hbar^2}{2}\sum_i \frac{1}{m_i}\frac{\partial^2 }{\partial q_i^2}+U\]
+式中$U$是所有粒子的相互作用势能.展开得到
+\begin{equation}
+  \dfrac{\partial I}{\partial \beta}=-E(p,q)I+\sum_i \dfrac{\hbar^{2}}{2m_i}\left( \dfrac{2\mathrm{i} }{\hbar}p_i \dfrac{\partial I}{\partial q_i}+\frac{\partial^2 I}{\partial q_i^2} \right) 
+\end{equation}
+式中$E(p,q)=\sum_i \dfrac{p_i^{2}}{2m_i}+U$
+
+当$\beta=0$时显然有$I=1$上述方程在此条件下求解,将
+\begin{equation}
+  I=e^{-\beta E(p,q)} \chi
+\end{equation}
+带入后,方程化为一下形式:
+\begin{equation}
+  \dfrac{\mathrm{d}\chi}{\mathrm{d} \beta}=\sum_i \frac{\hbar^{2}}{2m_i}\left[ -\dfrac{2\mathrm{i} \beta p_i}{\hbar}\dfrac{\partial U}{\partial q_i}\chi+\dfrac{2\mathrm{i} p_i}{\hbar}\dfrac{\partial \chi}{\partial q_i}-\beta\chi\frac{\partial^2 U}{\partial q_i^2}+\beta^{2}\chi\left( \dfrac{\partial U}{\partial q_i} \right) ^{2}-2\beta \dfrac{\partial \chi}{\partial q_i}\dfrac{\partial U}{\partial q_i}+\frac{\partial^2 \chi}{\partial q_i^2} \right] 
+\end{equation}
+其边界条件为:$\beta=0$时,$\chi=1$
+
+然后用微扰法求解:令
+\begin{equation}
+  \chi=1+\hbar\chi_1+\hbar^{2}\chi_2
+\end{equation}
+然后代入方程,分离不同$\hbar$的幂次,得到:
+\begin{align}
+&\dfrac{\partial \chi_1}{\partial \beta}=-\mathrm{i} \beta\sum_i \dfrac{p_i}{m_i}\dfrac{\partial U}{\partial q_i} \\ 
+&\dfrac{\partial \chi_2}{\partial \beta}=\sum_i \frac{1}{2m_i}\left[ -2\mathrm{i} \beta p_i \dfrac{\partial U}{\partial q_i}\chi_1+2\mathrm{i} p_i \dfrac{\partial \chi_1}{\partial q_i}-\beta \frac{\partial^2 U}{\partial q_i^2}+\beta^{2} \left( \dfrac{\partial U}{\partial q_i} \right) ^{2} \right]
+\end{align}
+积分得到:
+\begin{align}
+&\chi_1=-\dfrac{\mathrm{i} \beta^{2}}{2}\sum_i \dfrac{p_i}{m_i}\dfrac{\partial U}{\partial q_i} \\ 
+&\chi_2=-\dfrac{\beta^{4}}{8}\left( \sum_i \dfrac{p_i}{m_i}\dfrac{\partial U}{\partial q_i}
+ \right) ^{2}+\dfrac{\beta^{3}}{6}\sum_i \sum_k \dfrac{p_i}{m_i}\dfrac{p_k}{m_k}\dfrac{\partial^{2} U}{\partial q_i \partial q_k}+\dfrac{\beta^{3}}{6}\sum_i \frac{1}{m_i} \frac{\partial^2 U}{\partial q_i^2}
+\end{align}
+则所求的配分函数等于积分
+\begin{equation}
+  Z=\int'(1+\hbar \chi_1+\hbar^{2}\chi_2)e^{-\beta E}\mathrm{d} \Gamma
+\end{equation}
+显然,$\hbar$的一次项为0.因为被积函数是动量的奇函数,于是对动量积分后为零.这很合理,薛定谔方程中$\mathrm{i} \hbar$总是一起出现,而可观测量总是实的,故一次项必然为零.于是原式可以写为:
+\begin{equation}
+  Z=(1+\hbar^{2}\bar{\chi_2})\int' e^{-\beta E}\mathrm{d} \Gamma
+\end{equation}
+定义$\chi_2$的"平均值"
+\[\bar{\chi_2}=\dfrac{\int'\chi_2 e^{-\beta E}\mathrm{d} \Gamma}{\int' e^{-\beta E}\mathrm{d} \Gamma}\]
+得到自由能为:
+\begin{equation}
+  F=F_0-\frac{1}{\beta}\ln(1+\hbar^{2}\bar{\chi_2})
+\end{equation}
+或者在同样的精度下:
+\begin{equation}
+  F=F_0-\dfrac{\hbar^{2}}{\beta}\bar{\chi_2}\label{eq:3.13}
+\end{equation}
+
+\vspace*{0.5cm}
+
+剩下的问题就是要解决$\bar{\chi_2}$的计算了.
+
+利用 
+\[\left< p_i p_k \right> =\dfrac{m_i}{\beta}\delta_{ik}\]
+对动量进行平均得到
+\begin{equation}
+  \chi_2=\dfrac{\beta^{3}}{24}\sum_i \frac{1}{m_i}\left< \left( \dfrac{\partial U}{\partial q_i} \right) ^{2} \right> -\dfrac{\beta^{2}}{12}\sum_i \frac{1}{m_i}\left< \frac{\partial^2 U}{\partial q_i^2} \right> 
+\end{equation}
+这里两项可以合为一项,只要注意到:
+\footnote{因为 
+\[\int \frac{\partial^2 U}{\partial q_i^2}e^{-\beta U}\mathrm{d} q_i=\dfrac{\partial U}{\partial q_i}e^{-\beta U}+\beta\int\left( \dfrac{\partial U}{\partial q_i} \right) ^{2}e^{-\beta U}\mathrm{d}  q_i\]
+而右侧第一项是表面效应,相对于第二项和左侧的提及效应可以忽略.}
+\[\left< \frac{\partial^2 U}{\partial q_i^2} \right> =\beta \left< \left( \dfrac{\partial U}{\partial q_i} \right) ^{2} \right> \]
+
+把得到的$\bar{\chi_2}$代入公式\eqref{eq:3.13}
+
+
