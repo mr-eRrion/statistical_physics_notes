@@ -1,0 +1,142 @@
+% !TeX root = 统计物理.tex
+
+\section{密度算符}
+\subsection{密度算符的引入和定义}
+    作为量子统计系列的第一篇,首先需要介绍的是密度算符.
+    
+    \vspace*{0.5cm} 
+
+    量子统计中同样需要\emph{分数布局}或\emph{概率权重}的概念.定义为系综中含有某个量子态的比重.如一束非极化的原子束,存在一半自旋向上,一半自旋向下的粒子,则这个系综\emph{不}可以表示为:
+    \[\ket{\alpha}=\frac{1}{\sqrt{2}}(\ket{-}+\ket{+})\]
+    这是因为$\ket{+}$和$\ket{-}$之间的相位信息暗含了自旋在xy平面的信息,即这不是最最混乱的系综.真正混合的系综是无法使用态矢量表述的.
+
+    从炉子钟飞出的一束银原子展现了一个完全随机系综(completely random ensemble),其自旋没有任何特殊的取向.同样,存在处于一个完全确定的量子态的系综(如从炉子钟飞出的银原子经过了一个斯特恩-盖拉赫仪器而成为一束极化束)被称为纯系综(pure ensemble).对于一个一般的系综,被称为混合系综(mixed ensemble).完全随机系综和纯系综可以看成混合系综的两个极端.
+
+    \vspace*{1cm}
+
+    假设有一个系综,含有的第$i$个量子态记为$\ket{\alpha_i}$,占整个系综的比重为$w_i$.而整个态可以写为$\ket{\alpha}=\sum\limits_i c_i \ket{\alpha_i}$.现在考虑一个可观测量$A$在这个系综中的平均:
+    \[[A]=\sum_i w_i \bra{\alpha_i}A\ket{\alpha_i}\]
+    这里$w_i$是系综中包含每个组分的量,满足归一化条件$\sum\limits_i w_i=1$.(注意:绝对不能把$\left\vert c_i \right\vert ^{2}$和$w_i$等同!两者是完全不同的两个概念!)注意到可观测量在$A$在此系综中的平均,不仅把$A$在每个量子态上做了期望,而且还把每个期望按组分的权重加权平均.
+
+    \vspace*{0.5cm}
+
+    对系综平均式做一个改写:
+    \begin{align*}
+     \left[ A \right] &=\sum_i w_i \sum_{b'}\sum_{b''}\bra{\alpha_i}\ket{b'}\bra{b'}A\ket{b''}\bra{b''}\ket{\alpha_i}\\ 
+     &=\sum_{b'}\sum_{b''}\left( \sum_i w_i \bra{b''}\ket{\alpha_i}\bra{\alpha_i}\ket{b'} \right) \bra{b'}A\ket{b''}
+    \end{align*}
+    这样,系综本身的性质就剥离出来了,这个式子的形式驱使我们定义一个关于系综本身的算符:
+    \begin{equation}
+      \hat{\rho}\equiv \sum_i w_i \ket{\alpha_i}\bra{\alpha_i}
+    \end{equation}
+    
+    称为\emph{密度算符}.
+
+    \vspace*{0.5cm}
+
+    这样,一个可观测量的系综平均值$\left[ A \right] $就可以写成:
+    \begin{equation}
+      \left[ A \right] =\sum_{b'}\sum_{b''}\bra{b''}\rho\ket{b'}\bra{b'}A\ket{b''}=\tr(\rho A)
+    \end{equation}
+
+    这样我们就得到了一个用于描述系综本身很好的算符.
+
+    我们有一个疑问:既然可以用占系综的比重来定义密度算符为
+    \[\rho=\sum_i w_i \ket{\alpha_i}\bra{\alpha_i}\]
+    而我们也有整个态$\ket{\alpha}=\sum\limits_i c_i \ket{\alpha_i}$,把可观测量$A$放到整个态上去平均也是可以的.
+
+    经过同样的步骤,可以得到另一种密度算符的表达式:
+    \begin{equation}
+      \rho=\ket{\alpha}\bra{\alpha}=\sum_i \sum_j c_i c_j^{*}\ket{\alpha_i}\bra{\alpha_j}
+    \end{equation}
+    
+    而且不难发现,计算$A$的平均值的时候仍有公式
+    \[\left[ A \right] =\tr(\rho A)\]
+
+\subsection{两种密度算符的性质}
+
+    刚刚说到密度算符有两种定义形式,分别是:
+    \begin{itemize}
+        \item 组成系综的态矢量为$\ket{\alpha}=\sum\limits_i c_i\ket{\alpha_i}$,而密度算符为:
+            \begin{equation}
+              \rho=\ket{\alpha}\bra{\alpha}=\sum_i \sum_j c_i c_j^{*}\ket{\alpha_i}\bra{\alpha_j}
+            \end{equation}
+        
+        \item 系综中第$i$组分为$\ket{\alpha_i}$,占整个系综的比重为$w_i$,而密度矩阵为:
+            \begin{equation}
+                \rho=\sum_i w_i \ket{\alpha_i}\bra{\alpha_i}
+            \end{equation}
+            
+    \end{itemize}
+    有时候,会把用第一种表述的系综称为"纯态",而第二种称作"混合态".理由稍后会说到.
+
+\subsubsection*{第一种密度算符的性质}
+    由于第一种密度算符直接和态矢量相关联,于是其有良好的性质:
+    \begin{itemize}
+        \item[1] 概率归一化:有$\bra{\alpha}\ket{\alpha}=\tr(\rho)=1$
+        \item[2] 对角元即相应状态的布居数.非对角元代表两个状态之间的相干性.
+        \item[3] 密度矩阵的平方等于自身:$\rho^{2}=\rho$
+    \end{itemize}
+
+
+\subsubsection*{第二种密度算符}
+    第二种密度算符势"混合态"的密度算符,其性质就没那么好了:
+    \begin{itemize}
+        \item[1] $\tr(\rho^{2})$是介于0和1之间的数.且当且仅当纯系综时,其取值1.
+    \end{itemize}
+    
+\subsubsection*{向连续的推广}
+    左乘$\bra{\mathbf{x}''}$右乘$\ket{\mathbf{x}'}$,得到密度算符用波函数的表示:
+    \begin{itemize}
+        \item[纯态:]
+            \begin{equation}
+                \rho(\mathbf{x}'',\mathbf{x}')=\psi(\mathbf{x}'')\psi^{*}(\mathbf{x}')
+            \end{equation}
+            
+        \item[混合态:]
+            \begin{equation}
+                \rho=\sum_i w_i \psi_i(\mathbf{x}'') \psi_i^{*}(\mathbf{x}')
+            \end{equation}
+        
+
+    \end{itemize}
+    
+
+
+
+\subsection{密度矩阵用来描述混合态}
+    如上所述,第一种密度算符和原本的态矢量等效,因此对纯态使用密度算符并没有很大收益.而很多系统是无法用完整的态矢量所描述的,这就到了密度算符排上用场的时候.
+
+    譬如一个大封闭系统中的一个子系统.整个封闭系统可以用一个态矢量描述,设为$\ket{\alpha_0}$.对于子系统$\ket{\alpha}$(这里形式上地用一个态矢量表述),和"介质"(封闭系统除子系统之外的部分)$\ket{\alpha'}$,在具有相互作用的情况下,不会有$\ket{\alpha_0}=\ket{\alpha}\ket{\alpha'}$.于是想得到某个可观测量在子系统上的平均,就只能:
+    \[\bar{f}=\sum_\alpha \sum_{\alpha'}\bra{\alpha,\alpha'}\hat{f}\ket{\alpha,\alpha'}\]
+    其中$\ket{\alpha,\alpha'}$是整个系统的态右矢,前面的$\alpha$是所考察的子系统的变量组,$\alpha'$是介质的变量组.$\hat{f}$只作用在$\alpha$上.
+
+    此时密度算符$\rho=\sum\limits_{\alpha'}\ket{\alpha,\alpha'}\bra{\alpha,\alpha'}$仍然可以用于描述子系统的统计性质.
+
+    同时也可以注意到,如果满足$\ket{\alpha_0}=\ket{\alpha}\ket{\alpha'}$,则整个系综退化为纯态,可以直接使用一个完整的态矢量描述所观测的子系统.
+
+\subsection{密度算符和统计}
+考察密度算符对时间的演化,如果不去扰动一个系综,则其分布布居数是不会变化的,所以引起变化的只能是态矢量.代入薛定谔方程不难得到:
+\begin{equation}
+    \dot{\rho}=\dfrac{i}{\hbar}(\rho H-H \rho)=\dfrac{i}{\hbar}\left[ \rho ,H\right] 
+\end{equation}
+考虑到考察的子系统可认为是准独立性的,于是密度算符是一个守恒量,它于哈密顿量可以同时对角化.在密度算符对角化的表象中(同时也是能量表象),对角元素表征了本征态上的布居分布.
+可以看出$\rho$是系统的一个运动积分,利用准独立性,有$\rho_{12}=\rho_1\cdot \rho_2$,也即$\ln(\rho_{12})=\ln\rho_1+\ln\rho_2$,即$\ln\rho$对应于可加性的运动积分.记为(动量是平凡的,角动量暂时不考虑):
+\begin{equation}
+    \ln \rho_i=\alpha+\beta E_i
+\end{equation}
+
+这样可以继续按经典统计的方法引入熵$S$,定义为:
+\begin{equation}
+    S=\ln \Delta\Gamma
+\end{equation}
+其中$\Delta \Gamma$表征子系统宏观状态按其微观状态的"展宽程度".满足归一化条件$\Delta \Gamma \cdot \rho(\bar{E})=1$,又利用$\ln \rho$和$E$线性关系,有
+\begin{equation}
+    S=-\ln \rho(\bar{E})=-\langle \ln \rho(E) \rangle=\sum\limits_i \rho_i ln \rho_i
+\end{equation}
+或写成基本的算符形式:
+\begin{equation}
+    S=-Tr(\rho \ln \rho)
+\end{equation}
+这种形态的熵被称作冯诺依曼熵.另外:长$S=\ln\Delta\Gamma$这样的熵被称作玻尔兹曼熵.
+

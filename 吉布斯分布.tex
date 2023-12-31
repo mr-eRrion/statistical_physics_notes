@@ -1,0 +1,165 @@
+% !TeX root = 统计物理.tex 
+
+\section{吉布斯分布}
+\subsection{微正则分布}
+  为了确定一个子系统的分布函数,最简单的办法就是用一个delta function 把系综限制在等能面上,即
+  \[\rho_M=\operatorname{const}\cdot \delta(E-E_0)=\frac{1}{\Omega(E,\mathbf{x})}\delta(E-E_0)\]
+  $\rho_M$为某一个量子态$M=(E,\mathbf{x})$的分布概率.这里$(E,\mathbf{x})$用相空间的坐标来刻画一个量子态.
+  
+  值得注意的是:这里用到了统计物理的基本假设,即玻尔兹曼等概率原理(\emph{Boltzmann's assumption of equal a priori equilibrium probabilities}). 作为统计物理最底层的原理,它无法被导出,只是作为一个原理存在. 它和刘维尔定理独立存在, 并不依存于刘维尔定理. 
+
+\subsection{正则分布}
+\subsubsection{正则分布的导出}
+  微正则系综中,系统的总能量是固定的,于是系统的微观态用$(E,\mathbf{x})$表示. 而更多的情况下我们知道系统的温度而不是总能量, 即系综的一个微观状态用$(T,\mathbf{x})$表示. 把考察的物体S恒定在温度$T$上的办法就是让它和一个恒温的大热源R相接触. 这个热源是如此之大, 以至于和物体的能量交换无法引起一点点可观的温度变化. 而认为物体和大热源构成一个闭合系统, 从而对整个系统应用微正则分布. 
+
+  若把表征微观态的全部信息用$\mu$表示,则整个闭合系统的微观态可以用$\mu_S \otimes \mu_R$表示, 于是全系统的分布可以写为:
+  \begin{equation}
+    \rho(\mu_S \otimes \mu_R)=\dfrac{\delta(E_S+E_R-E_0)}{\Omega}
+  \end{equation}
+  于是所考察的物体的微观状态的分布概率则为:
+  \[\rho(\mu_S)=\sum_{\mu_R}\rho(\mu_S \otimes \mu_R)=\dfrac{\Omega_R(E_0-E_S)}{\Omega_{S+R}(E_0)}\]
+  利用熵的公式$S=\ln\Omega$,得到
+  \[\rho_(\mu_S) \propto \exp[S_R(E_0-E_S)] \]
+  把熵展开,得到 
+  \[\rho(\mu_S) \propto \exp\left[S_R(E_0)-E_S\cdot \dfrac{\partial S}{\partial E}\right] \propto \exp(-\beta E_S)\]
+  其中$\beta=1 / T$作为参量出现在指数上.这样我们就得到的所谓\emph{正则分布}
+  把分布函数写成这样的形式:
+  \begin{equation}
+    \rho_S=\frac{1}{Z}e^{-\beta E_S}
+  \end{equation}
+  其中$Z$被称为配分函数(\emph{partition function}). 
+  
+  注意到配分函数就是算符$e^{-\dfrac{\hat{H}}{T}}$的迹,式中$\hat{H}$是物体的哈密顿算符.
+  \begin{equation}
+    Z=\tr(-e^{- \hat{H} / T})
+  \end{equation}
+  这种形式的配分函数意味着可以用任何归一的完备基来计算配分函数.
+
+  经典情况下的配分函数写作:
+  \begin{equation}
+    Z=\int' e^{-E(p.q) / T} \mathrm{d} \Gamma
+  \end{equation}
+  这里积分符号上打一撇表示对不同的状态积分(有时候会出现同一个相点表示的是同一个状态的情况,比如出现全同粒子).
+
+\subsubsection{配分函数及其热力学公式}
+  写出分布概率的归一化条件:
+  \begin{equation}
+    Z=\sum_S e^{-\beta E_S}
+  \end{equation}
+  而物体的熵可以利用分布函数对数的平均值来计算:
+  \[S=-\left< \ln \rho \right> \]
+  则得到
+  \[S=-Z+\dfrac{\bar{E}}{T}\]
+  即有(在热力学极限下$\bar{E}=E$后者为对应的热力学量):
+  \begin{equation}
+    Z=S-\dfrac{\bar{E}}{T}=\frac{F}{T}
+  \end{equation}
+  其中$F$是自由能.
+
+  通过对配分函数的对数求偏导可以得到各种热力学量的公式,比如:
+  \begin{equation}
+    E=-\dfrac{\partial }{\partial \beta}\ln Z
+  \end{equation}
+  \begin{equation}
+    \mathbf{J}=-\frac{1}{\beta}\dfrac{\partial }{\partial \mathbf{x}}\ln Z
+  \end{equation}
+  这里$\mathbf{J},\mathbf{x}$是一组外参量代表外界的做功
+
+\subsection{带有外参量的正则分布}
+  平常的正则分布用$(T,\mathbf{x})$表示系统微观状态,在带有外参量(允许做功)的情况下,使用$(T,\mathbf{J})$表征系统状态.这里$\mathbf{J},\mathbf{x}$构成一对广义力和广义位移.若记作用在系统上的功为$+\mathbf{J}\cdot \mathbf{x}$,则对应的能量变化在外参量的表示下\emph{应该反号},于是写在指数上的能量应该是$(E-\mathbf{J}\cdot \mathbf{x})$
+  \[\rho(\mu_S.\mathbf{x})=\exp[-\beta E_S+\beta \mathbf{J}\cdot \mathbf{x}] / Z\]
+  其中配分函数$Z$应该写成:
+  \begin{equation}
+    Z=\sum_{S,\mathbf{x}}e^{-\beta E_S+\beta \mathbf{J}\cdot \mathbf{x}}
+  \end{equation}
+
+  在这种系综下,广义坐标的期待值应该是:
+  \begin{equation}
+    \left< \mathbf{x} \right> =T\dfrac{\partial }{\partial \mathbf{J}}\ln Z
+  \end{equation}
+  注意到热力学公式:$\mathbf{x}=-\dfrac{\partial G}{\partial \mathbf{J}}$,有
+  \begin{equation}
+    G=-T \ln Z
+  \end{equation}
+  这里$G$是吉布斯自由能
+  
+  同样,焓$H=E-\mathbf{x}\cdot \mathbf{J}$的公式为:
+  \begin{equation}
+    H=-\dfrac{\partial }{\partial \beta}\ln Z
+  \end{equation}
+
+
+\subsection{巨正则分布}
+在正则分布下,系统的微观状态用$(T,\mathbf{x})$表示.而在巨正则分布中,我们寻求用$(T,\mu)$的表示.
+
+微正则分布写成:
+\begin{equation}
+    \mathrm{d} \rho = \operatorname{const} \cdot \delta(E+E'-E^{(0)})\cdot \delta(N+N'-N^{(0)})~\mathrm{d} \Gamma ~\mathrm{d} \Gamma'
+\end{equation}
+式中的$E,N,\mathrm{d} \Gamma$和$E',N',\mathrm{d} \Gamma'$分别属于物体和介质,而$E^{(0)},N^{(0)}$是闭合系统给定的能量和粒子数,物体和介质的能量与粒子数之和应该分别等于这两个值.
+
+在(2.1)式中用1代替$\mathrm{d} \Gamma$来表征对某个态的考虑,并以相同理由令$E=E_{nN},N=N_n$(能量这么做是因为能级可能会受粒子数影响),并对$\mathrm{d} \Gamma'$进行积分就求出所寻求的概率$\rho_n$:
+\begin{equation}
+  \rho_n=\operatorname{const}\cdot \int \delta(E_{nM}+E'-E^{(0)})\cdot \delta(N_n+N'-N^{(0)})\mathrm{d}\Gamma
+\end{equation}
+设$\Gamma'(E',N')$表示介质的能量小于等于$E'$且粒子数小于等于$N'$的量子态总数.利用
+\[\mathrm{d} \Gamma'=\dfrac{\partial \Gamma'}{\partial E'}\mathrm{d} E'+\dfrac{\partial \Gamma'}{\partial N'}\mathrm{d} N\]
+改写被积式.再利用
+\[\dfrac{\partial \Gamma'}{\partial E'}=\dfrac{e^{S'(E',N')}}{\Delta E'}\qquad\dfrac{\partial \Gamma'}{\partial N'}=\dfrac{e^{S'(E',N')}}{\Delta N'}\]
+代入积分式,则有
+\begin{equation}
+  \rho_n=\operatorname{const}\cdot\left( \int\dfrac{e^{S'}}{\Delta E'}\delta(E'+E_{nN}-E^{(0)})\mathrm{d} E'+\int\dfrac{e^{S'}}{\Delta N'}\delta(N'+N_n-N^{(0)})\mathrm{d} N' \right) 
+\end{equation}
+由于$\delta$函数的存在,积分归结为用$E^{(0)}-E_n$和$N^{(0)}-N'$来代替$E'$和$N'$,我们就得到:
+\begin{equation}
+  \rho_n=\operatorname{const}\cdot\left( \left( \dfrac{e^{S'}}{\Delta E'} \right) _{E'=E^{(0)}-E_{nN}}+\left( \dfrac{e^{S'}}{\Delta N'} \right) _{N'=N^{(0)}} \right) 
+\end{equation}
+由于能量和粒子数$E_n$和$N_n$相比整个系统是非常微小的量,于是分母可以被当作变化很小的量而被放入常数,而对分子的$e^{S'(E',N')}$做线性展开,即
+\begin{equation}
+    S'(E',N')=S'(E^{(0)}-E_{nN},N^{(0)}-N_n)=S'(E^{(0)},N^{(0)})-E_{nN} \dfrac{\partial S'}{\partial E_{nN}}-N_n\dfrac{\partial S'}{\partial N_n}
+\end{equation}
+而熵对能量的导数不是别的,正是$\dfrac{1}{T}$;熵对粒子数的导数也正是$-\dfrac{\mu}{T}$,于是得到:
+\begin{equation}
+    \rho_nN=A\exp(\dfrac{\mu N-E_{nN}}{T})
+\end{equation}
+现在计算归一化常数,先计算熵:
+\[S=- \left< \ln\rho_{nN} \right> =-\ln A -\dfrac{\mu \bar{N}}{T}+\dfrac{\bar{E}}{T} \]
+由此得出:
+\[T \ln A= \bar{E} - TS - \mu \bar{N}\]
+而$\Omega=\bar{E}-TS -\mu \bar{N}$(这里$\Omega$是巨热力学势,简称巨势\emph{grand potential})代入表达式,最后得到:
+\begin{equation}
+  \rho_{nN}=\exp(\dfrac{\Omega +\mu N -E_{nN}}{T})
+\end{equation}
+这就是这个可变粒子数的吉布斯分布的最终表达式.这个分布有时候也被称为巨正则分布.
+
+利用分布(2.7)的归一化条件,即 
+\[\sum_n\sum_N \rho_{nN}=e^{\Omega / T}\sum_N\left( e^{\mu N / T} \sum_n e^{-E_{nN} / T} \right) =1 \]
+得到巨势$\Omega$的表达式:
+\begin{equation}
+  \Omega= -T \ln\sum_N\left[ e^{\mu N / T}\sum_ne^{-E_{nN} / T} \right] 
+\end{equation}
+此公式给出巨势$\Omega$关于$T,\mu , V$的函数,从而得到整个系统的其他热力学量.
+
+引入巨配分函数$\Xi$定义为 :
+\begin{equation}
+  \Xi=\sum_N\left[ e^{\mu N / T}\sum_ne^{-E_{nN} / T} \right]
+\end{equation}
+这样就有:
+\begin{equation}
+  \Omega=-T\ln\Xi
+\end{equation}
+
+
+更常用的是用巨配分函数导出各个热力学量,先定义几个常数:$\alpha=-\mu /T,\beta=-1/T$,如:
+
+粒子数\[\bar{N}=\sum_N \sum _nN\rho_{nN}=-\dfrac{\partial \ln \Xi}{\partial \alpha}\]
+内能:\[\bar{E}=\sum_N \sum_n E \rho_{nN}=-\dfrac{\partial \ln \Xi}{\partial \beta}\]
+熵:\[S = -\Omega/T+\bar{E}/T -\mu \bar{N} /T=\ln \Xi-\beta\dfrac{\partial \ln\Xi}{\partial \beta}-\alpha\dfrac{\partial \ln\Xi}{\partial \alpha}\]
+
+
+\subsection{算例:振子的概率分布}
+  考虑振子:其能量可以写成:
+  \begin{equation}
+    E= \hbar \omega (n+\frac{1}{2})
+  \end{equation}
+  

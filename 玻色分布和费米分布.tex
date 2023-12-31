@@ -1,0 +1,603 @@
+% !TeX root = 统计物理.tex
+
+\section{玻色分布和费米分布}
+
+\subsection{全同粒子的交换对称性}
+    设有两个粒子,一个粒子用$\ket{\mu_1}_1$表示其状态;另一个粒子用$\ket{\mu_2}_2$表示其状态.两个粒子的态右矢可以写成简单的乘积形式$\ket{\mu_1}_1 \otimes \ket{\mu_2}_2$
+
+    定义交换算符$P_{12}$来交换$\mu_1$和$\mu_2$,粒子的全同性将导致
+    \[P_{ij} H P_{ij}^{-1}=H\]
+    因为$P_{ij}$与总动量对易,并和空间变换对易,它就不可能是反幺正的.于是$P_{ij}$的任意相位被规定到了$P_{ij}^{2}=1$上,于是交换算符的本征值为$\pm 1$
+
+    考察$N$个粒子时,有:
+    \[[P_{ij},P_{lk}]\neq 0 \quad \text{unless} ~i,j,l,k ~\text{are different}\]
+    $N$粒子的完备集即为所有粒子态的积:
+    \begin{equation}
+      \ket{\mu_{1}\mu_2\cdots\mu_N}=\ket{\mu_1}_1 \otimes \ket{\mu_2}_2 \cdots \otimes \ket{\mu_N}_N
+    \end{equation}
+    这里的$\mu_i$代表用来描述原第$i$个粒子可观测量的本征值,$\ket{ }_i$则是对应粒子希尔伯特空间内的一个右矢.
+
+    把$P_{12}$作用到这个态上,得到
+    \begin{equation}
+      P_{12}\ket{\mu_1\mu_2\cdots\mu_N}=\ket{\mu_2}_1 \otimes \ket{\mu_1}_2 \cdots\otimes \ket{\mu_N}_N=\ket{\mu_2 \mu_1 \cdots \mu_N}
+    \end{equation}
+    
+    \vspace*{0.5cm
+    }
+    考虑多个交换算符的乘积,即置换算符$P$
+
+    对$P\ket{\mu_1 \mu_2 \cdots \mu_N}=\ket{\mu_1 \mu_2 \cdots \mu_N}$这样的粒子体系,称为\emph{玻色子},其波函数完全对称
+
+    对$P\ket{\mu_1 \mu_2 \cdots \mu_N}=(-1)^{P} \ket{\mu_1 \mu_2 \cdots \mu_N}$这样的粒子体系,称为\emph{费米子},其波函数完全反对称.
+    \footnote{这里$(-1)^{P}$定义为
+    \begin{equation}
+      (-1)^{P}=\left\{ 
+        \begin{aligned}
+         +1\quad\text{如果$P$包含偶数个交换}\\
+         -1\quad\text{如果$P$包含奇数个交换} 
+        \end{aligned}
+      \right.
+    \end{equation}
+    }
+    
+    在希尔伯特空间中,只有完全对称(反对称)的子空间是属于玻色子(费米子)的.
+
+    费米子的子空间构造为:
+    \begin{equation}
+      \ket{\mu_1 \mu_2 \cdots \mu_N}_-=\dfrac{1}{\sqrt{N_-}}\sum_P (-1)^{P} \cdot P\ket{\mu_1 \mu_2 \cdots \mu_N}
+    \end{equation}
+    这里$N_-$作为归一化常数等于$N!$
+
+    而对于玻色子,其子空间构造为:
+    \begin{equation}
+      \ket{\mu_1 \mu_2 \cdots \mu_N}_+=\dfrac{1}{\sqrt{N_+}} \sum_P \cdot P\ket{\mu_1 \mu_2 \cdots \mu_N}
+    \end{equation}
+    这里$N_+$作为归一化常数等于$N!\prod_{\alpha}^{} n_\alpha !$(这个略微算一下内积就好了)
+
+
+\subsection{玻色分布和费米分布}
+    这里从巨正则系综开始导出玻色和费米分布的公式:
+
+    考察第$s$个量子态,则巨配分函数写成:
+    \begin{equation}
+      \ln \Xi_s=\ln \sum_{n_s}\left[ \exp(\dfrac{\mu-\varepsilon_s}{T}) \right] ^{n_s}
+    \end{equation}
+    这里$n_s$是第$s$个量子态上的布居数
+\subsubsection{费米分布}
+    费米系统遵循泡利不相容原理,$n_s$只能取值0或1.于是
+    \begin{equation}
+      \ln \Xi_s = \ln(1+\exp\dfrac{\mu-\varepsilon_s}{T})
+    \end{equation}
+    则此量子态内的平均粒子数为:
+    \begin{equation}
+      \bar{n_s}=\dfrac{\exp(\mu-\varepsilon_s) / T}{1+ \exp (\mu -\varepsilon _s) / T}=\dfrac{1}{e^{(\varepsilon_s-\mu) / T}+1}
+    \end{equation}
+    其中化学势以归一化条件的方程给出:
+    \[\sum_s \dfrac{1}{e^{(\varepsilon_s - \mu) / T}+1}=N\]
+    
+    整个气体的巨配分函数的对数即为:
+    \begin{equation}
+      \ln\Xi=\sum_s \ln(1+\exp\dfrac{\mu- \varepsilon_s}{T})
+    \end{equation}
+    注意:由于费米子是有自旋粒子,所以可能还需要考虑自旋带来的简并度之类的情况.
+
+\subsubsection{玻色分布}
+    玻色系统的量子态上粒子数没有限制,于是对$n_s$的求和求到正无穷.把求和作为几何级数求和,这个级数当且仅当$\exp\dfrac{\mu-\varepsilon_s}{T}<1$时才是收敛的. 这个条件应该对所有的$\varepsilon_s$成立,于是有:
+    \[\mu<0\]
+    实际上,化学势不仅是负的,其绝对值一般还很大.
+
+    得到玻色系统的巨配分函数为:
+    \begin{equation}
+      \ln\Xi_s=-\ln(1-\exp\dfrac{\mu-\varepsilon_s}{T})
+    \end{equation}
+    同样,得到其平均粒子数为
+    \begin{equation}
+      \bar{n_s}=\frac{1}{e^{(\varepsilon_s -\mu) / T}-1}
+    \end{equation}
+    归一化条件
+    \begin{equation}
+      \sum_s \dfrac{1}{e^{(\varepsilon_s-\mu)/T}-1}=N
+    \end{equation}
+    整个系统的巨配分函数:
+    \begin{equation}
+      \ln\Xi=-\sum_s \ln(1-\exp\dfrac{\mu-\varepsilon_s}{T})
+    \end{equation}
+
+\subsection{从数数开始导出费米分布和玻色分布}
+    如题,直接把玻色费米系统的状态数给算出来,再令熵最大化,就可以得到分布函数.下面总是从单个的量子态出发考察系统.
+    
+    费米情况下,可能的状态数就是从总的状态数(设为$G_s$).$N_s$个例子分布在$G_s$个状态上,对费米系统,就是从$G_s$个态中挑选出$N_s$个填上一个粒子.于是 
+    \begin{equation}
+      \Delta \Gamma_s=\dfrac{G_s!}{N_s!(G_s-N_s)!}
+    \end{equation}
+    取对数,利用斯特令公式
+    \begin{equation}
+      S=\sum_s G_s[n_s\ln n_s+(1-n_s)\ln n_s ]
+    \end{equation}
+    结合约束:
+    \[N=\sum_s G_s n_s\]
+    \[E= \sum_s G_s \varepsilon_s n_s\] 
+    利用拉格朗日乘子法,得到平衡分布公式为
+    \begin{equation}
+      n_s=\frac{1}{e^{\alpha+\beta\varepsilon_s}+1}
+    \end{equation}
+
+    玻色情况下,利用一下隔板法就可以得出
+    \begin{equation}
+      \Delta \Gamma_s=\dfrac{(G_s+N_s-1)!}{(G_s-1)!N_s!}
+    \end{equation}
+    同样可得
+    \begin{equation}
+      S=\sum_s G_s[(1+n_s)\ln(1+n_s)-n_s \ln n_s]
+    \end{equation}
+    也同样可由拉格朗日乘子法得到玻色分布.
+
+    同时,指出每个量子态很大情况下的极限情形($N_s \gg G_s, n_s \gg1$)也是很有用的,在此情形下,玻色气体的熵写作:
+    \begin{equation}
+      S=\sum_s G_s \ln\dfrac{e N_s}{G_s}
+    \end{equation}
+  
+\subsection{理想量子气体}
+    三维情况下,粒子的能量写作
+    \[\varepsilon=\frac{1}{2m}(p_x^{2}+p_y^{2}+p_z^{2})\]
+    而态密度写作
+    \[g \mathrm{d} \Gamma=g\dfrac{\mathrm{d} p_x \mathrm{d}  p_y \mathrm{d} p_z \mathrm{d} V}{h^{3}}\]
+    这里$g$是自旋简并度,它等于$g=2s+1$
+    于是粒子数等于(正负号上面代表费米系统,下面代表玻色系统)
+    \[\mathrm{d} N=\dfrac{g\mathrm{d} \Gamma}{e^{(\varepsilon-\mu)/ T}\pm 1}\]
+    做一个变换,变换到能量分布(利用其各项同性)
+    \begin{equation}
+      \mathrm{d} N_\varepsilon=\dfrac{g V m^{3 / 2}}{\sqrt{2} \pi ^{2} \hbar ^{3}}\dfrac{\sqrt{\varepsilon}\mathrm{d} \varepsilon}{e^{(\varepsilon-\mu) / T}\pm 1}
+    \end{equation}
+    令$\varepsilon / T=x$,积分:
+    \begin{equation}
+      n=\dfrac{g(mT)^{3 / 2}}{\sqrt{2} \pi^{2}\hbar^{3}}\int_{0}^{\infty} \dfrac{\sqrt{x}}{e^{x+\alpha}\pm 1} \mathrm{d}x
+    \end{equation}
+    这个式子隐式地确定了粒子数密度$n$和化学势$\mu$以及温度$T$的关系.
+
+    对于巨势$J$,它等于巨配分函数对数乘上$-T$,于是
+    \[
+      J=\mp \dfrac{V g T m^{3 / 2}}{\sqrt{2} \pi^{2}\hbar^{3}}\int_{0}^{\infty} \sqrt{\varepsilon} \ln(1\pm  e^{(\mu-\varepsilon) / T}) \mathrm{d}\varepsilon
+    \]
+    分部积分,得 
+    \begin{equation}
+      J=-\dfrac{2}{3}\dfrac{gVm^{3 / 2}}{\sqrt{2}\pi^{2}\hbar^{3}}\int_{0}^{\infty} \dfrac{\varepsilon^{3 / 2}}{e^{(\varepsilon-\mu) / T}\pm 1} \mathrm{d}\varepsilon
+      \label{eq:4.22}
+    \end{equation}
+    而观察能量的表达式:
+    \begin{equation}
+      E=\int_{0}^{\infty} \varepsilon \mathrm{d} N_\varepsilon=\dfrac{gVm^{3 / 2}}{\sqrt{2} \pi^{2}\hbar^{3}}\int_{0}^{\infty} \dfrac{\varepsilon^{3 / 2}}{e^{(\varepsilon-\mu)/T}\pm 1} \mathrm{d}\varepsilon
+    \end{equation}
+    注意到两者只相差一个常数因子$- 2 / 3$而巨势$J=-PV$,于是得到了关系式:
+    \begin{equation}
+      PV=\frac{2}{3}E 
+    \end{equation}
+    注意到我们没有使用任何近似(其实还是使用了非相对论近似),这个关系是精确的,在玻尔兹曼系统下仍然成立.
+
+    在公式\eqref{eq:4.22}中,令$\varepsilon / T = x$,得到巨势
+    \begin{equation}
+      J=V T^{5 /2 }f(\dfrac{\mu}{T})
+    \end{equation}
+    这个式子代表巨势$J$是$\mu,T$的$\frac{5}{2}$次齐次函数.利用 
+    \[S=-\left( \dfrac{\partial J}{\partial T} \right) _{V,\mu}\text{and}~N=-\left( \dfrac{\partial J}{\partial \mu} \right) _{T,V}\]
+    知它们是$\mu,T$的$\frac{3}{2}$次齐次函数,而它们的比值$\frac{S}{N}$是零次齐次函数.由于绝热过程中熵保持为常数,于是知道绝热过程中$\mu / T$也保持为常数.而$\frac{N}{VT^{\frac{3}{2}}}$只是$\frac{\mu}{T}$的函数,故可得到绝热方程:
+    \begin{equation}
+      VT^{\frac{3}{2}}=\operatorname{const}\quad\text{以及}\quad PV^{5 / 3}=\operatorname{const}
+    \end{equation}
+    但这个"绝热指数"和比热的比值没有任何关系.此时关系$\dfrac{c_p}{c_v}=\frac{5}{3}$与$c_p-c_v=1$都不成立.
+
+    \vspace*{0.3cm}
+
+    把巨势$J$含的积分展开
+    \[\int_{0}^{\infty} \dfrac{x^{3 / 2}}{e^{x+\alpha}\pm 1} \mathrm{d}x\approx  \int_{0}^{\infty} x^{3 /2 }e^{-\alpha-x}(1\mp  e^{-\alpha-x}) \mathrm{d}x=\dfrac{e\sqrt{\pi}}{4}e^{-\alpha}\left( 1\mp \dfrac{1}{2^{5 / 2 }}e^{-\alpha} \right) \]   
+    于是得到巨势$J$
+    \begin{equation}
+      J=-\dfrac{g V m^{\frac{3}{2}} T^{\frac{5}{2}}}{(2\pi)^{\frac{3}{2}}\hbar^{3}} e^{-\alpha}\left( 1\mp \dfrac{1}{2^{5 /2}}e^{-\alpha} \right) =J_{id}\pm \dfrac{g V m^{3 /2 }T^{ 5/2} }{16\pi^{3 / 2}\hbar^{3}}e^{-2\alpha}
+    \end{equation}
+
+    利用小增量定理,根据巨势的修正项直接写出自由能的修正项:
+    \begin{equation}
+      F=F_{id}\pm \dfrac{\pi ^{ 3 / 2}}{2g}\dfrac{N^{2}\hbar^{3}}{VT^{1 / 2} m ^{3/2}}
+    \end{equation}
+
+    把自由能对体积求导,得到物态方程
+    \begin{equation}
+      PV=NT\left[ 1\pm \dfrac{\pi^{3 / 2}}{2g}\dfrac{N\hbar^{3}}{V(mT)^{3 / 2}} \right] 
+    \end{equation}
+
+\subsection{强简并费米气体}
+\subsubsection{零温下的费米气体}
+    先考虑零温下的费米气体:
+
+    $T=0$时,粒子应该尽可能地占据能量低的态,但由于泡利不相容原理,每个量子态最多占据一个粒子.这样则存在一个截止能量,截止能量之上不在有粒子分布.很明显,这个截止能量就是化学势$\mu$.此时的分布呈现阶梯形.同时,对应于能量的截止,也存在动量的截止与之对应.这被称为\emph{费米动量};同样,最大能量被称为\emph{费米能量}
+    \footnote{
+      $T \rightarrow 0$时,$e^{\frac{\varepsilon-\mu}{T}}$在$\varepsilon<\mu$时为0;而在$\varepsilon>\mu$时为$\infty$
+    }
+
+    电子气的费米动量可以这样求出($g$是自旋简并度):
+    \begin{equation}
+      N=\int_0^{p_F}gV\dfrac{4\pi p^{2}\mathrm{d} p}{(2\pi\hbar)^{3}}
+    \end{equation}
+    得到 
+    \begin{equation}
+      p_F=(\dfrac{6\pi^{2}n}{g} )^{1 / 3 }\hbar
+    \end{equation}
+    这里$n=\dfrac{N}{V}$为粒子数密度.
+
+    同样可得费米能量为
+    \begin{equation}
+      \varepsilon_F=\mu=\dfrac{p_F^{2}}{2m}=(\dfrac{6\pi^{2}n}{g})^{2 / 3}\dfrac{\hbar^{2}}{2m}
+    \end{equation}
+
+    计算出气体的总能量:
+    \begin{equation}
+      E=\dfrac{gV}{4m\pi^{2}\hbar^{3}}\int_0^{p_F}p^{4}\mathrm{d} p=\dfrac{gV p_F^{5}}{20 m \pi ^{2}\hbar^{3}}=\dfrac{3(3\pi^{2})^{2}g}{20}\dfrac{\hbar^{2}}{m}n^{2 / 3}N
+    \end{equation}
+    利用$PV=\frac{2}{3}E$,得到零温下的物态方程:
+    $P=\dfrac{(3\pi^{2})^{2 / 3}g}{10}\dfrac{\hbar^{2}}{m}n^{5 / 3}$
+    
+    \vspace*{0.4cm}
+
+    稍微放宽一点条件,在什么条件下我们可以近似地认为气体是零温地呢?(这种情况被称为"强简并"情况)
+
+    明显,$T$有微小改变时,对分布图像地影响仅仅是阶梯的"竖直边"变得略微平滑了一点点,不会影响到整体的分布情况.于是强简并条件可以写为:
+    \begin{equation}
+      T\ll \dfrac{g\hbar^{2}}{2m}n^{2 / 3}
+    \end{equation}
+    这里可以看到气体粒子数密度越大,强简并条件越宽松.
+
+\subsubsection{简并费米气的热容}
+    这里有三种算法.
+    \begin{itemize}
+      \item[I]
+        考察积分
+        \[I_m(\alpha)=\frac{1}{m!}\int_0 ^{\infty}\dfrac{x^{m}\mathrm{d} x}{e^{x+\alpha}+1}\]
+        分部积分:
+        \[I_m(\alpha)=\frac{1}{(m+1)!}\int_0^{\infty}\mathrm{d} x x^{m+1} \dfrac{\mathrm{d}}{\mathrm{d} x}\left( \frac{-1}{e^{x+\alpha}+1} \right) \]
+        做代换$x+\alpha=t$,积分变成:
+        \[I_m(\alpha)=\frac{1}{(m+1)!}\int_{\alpha}^{\infty}\mathrm{d} t (t-\alpha)^{m+1} \dfrac{\mathrm{d}}{\mathrm{d} t}\left( \frac{-1}{e^{t}+1} \right) \]
+        注意到$\alpha$是很大的负数,于是可以把积分下限写成负无穷.展开$(t-\alpha)^{m+1}$,得到:
+        \[I_m=\frac{1}{(m+1)!}\int_{-\infty}^{\infty}\mathrm{d} t \sum_{k=0}^{\infty}C_{m+1}^{k} t^{k}(-\alpha)^{m+1-k} \dfrac{\mathrm{d}}{\mathrm{d} t}\left( \frac{-1}{e^{t}+1} \right) \]
+        整理式子得到:
+        \[I_m=\sum_{k=0}^{\infty}\frac{(-\alpha )^{m+1-k}}{(m+1-k)!}\cdot \frac{1}{k!}\int_{-\infty}^{\infty} \mathrm{d} t\cdot t ^{k}\dfrac{\mathrm{d}}{\mathrm{d} t}\left( \frac{-1}{e^{t}+1} \right) \]
+        注意到:上边的积分在$k$为奇数的时候是反对称的, 而在偶数的时候是对称的.于是 
+        \[
+          \frac{1}{k!} \int_{-\infty}^{\infty} \mathrm{d} t \cdot t^{k} \dfrac{\mathrm{d}}{\mathrm{d} t}\left( \frac{1}{e^{t}+1} \right) =\left\{  
+            \begin{aligned}
+              &0 \quad&\text{when}~k~\text{odd}\\
+            &\frac{2}{k!}\int_{0}^{\infty} t^{k} \dfrac{\mathrm{d}}{\mathrm{d} t}\left( \frac{1}{e^{t}+1} \right)  \, \mathrm{d}t \quad&\text{when}~k~\text{even}
+           \end{aligned}
+          \right.
+         \]
+        利用分部积分把积分还原:
+        \[\frac{1}{k!}\int_{-\infty}^{\infty} \mathrm{d} t\cdot t ^{k}\dfrac{\mathrm{d}}{\mathrm{d} t}\left( \frac{1}{e^{t}+1} \right)=\frac{2}{(k-1)!}\int_{0}^{\infty} \frac{t^{k-1}}{e^{t}+1}  \, \mathrm{d}t\quad\text{when}~k~\text{even}~ \& ~k\ge 2\]
+        于是得到:
+        \[I_m=\frac{(-\alpha)^{m+1}}{(m+1)!}+\sum_{k=2}^{k~\text{even}} \frac{(-\alpha)^{m+1-k}}{(m+1-k)!}\frac{2}{(k-1)!}\int_{0}^{\infty} \frac{t^{k-1}}{e^{k}+1} \, \mathrm{d}t\]
+        即 
+        \[I_m=\frac{(-\alpha)^{m+1}}{(m+1)!}+\sum_{k=1}^{k~\text{odd}} \frac{(-\alpha)^{m-k}}{(m-k)!}\frac{2}{k!}\int_{0}^{\infty} \frac{t^{k}}{e^{k}+1} \, \mathrm{d}t\]
+        把积分展开,得到
+        \[I_m=\frac{(-\alpha)^{m+1}}{(m+1)!}+\sum_{k=1}^{k~\text{odd}} \frac{(-\alpha)^{m-k}}{(m-k)!}\frac{2}{k}\left( 1-\frac{1}{2^{k+1}}+\frac{1}{3^{k+1}}-\frac{1}{4^{k+1}}+ \cdots  \right) \]
+        为求后面的级数,我们记
+        \[\Sigma_{k+1}=1-\frac{1}{2^{k+1}}+\frac{1}{3^{k+1}}+ \cdots \]
+        \[S_{k+1}=1+\frac{1}{2^{k+1}}+\frac{1}{3^{k+1}}+ \cdots \]
+        有 
+        \[\Sigma_{k+1}+S_{k+1}=2\left( 1+\frac{1}{3^{k+1}}+\frac{1}{5^{k+1} }+ \cdots \right) \]
+        与 
+        \[\frac{1}{2^{k+1}}S_{k+1}+\Sigma_{k+1}=1+\frac{1}{3^{k+1}}+ \cdots\]
+        于是有 
+        \[\Sigma_{k+1}=\left( 1-\frac{1}{2^{k}} \right) S_{k+1}\]
+        原积分也可以写成(这被称为索末菲展开):
+        \[I_m=\frac{(-\alpha)^{m+1}}{(m+1)!}+\sum_{k=1}^{k~\text{odd}} \frac{(-\alpha)^{m-k}}{(m-k)!}\frac{2}{k}\left( 1-\frac{1}{2^{k}} \right) S_{k+1}\]
+        对于$S_{k+1}$,给出前面几项比较熟知的结论:
+        \[S_2=\frac{\pi^{2}}{6}\]
+        \[S_4=\frac{\pi^{4}}{90}\]
+        代回公式\eqref{eq:4.22},得到:
+        \[J=-\frac{2}{3}\frac{gVm^{3 /2}}{\sqrt{2}\pi^{2}\hbar^{3}} T^{5 /2}\left( \frac{2}{5}\left( \frac{\mu}{T} \right) ^{\frac{5}{2}}+\frac{\pi^{2}}{4}\left( \frac{\mu}{T} \right) ^{\frac{1}{2}}+\frac{\pi^{4}}{960}\left( \frac{\mu}{T} \right) ^{-\frac{3}{2}} + \cdots \right)\]
+        或
+        \begin{equation}
+          J=J_0-\frac{gVT^{2}}{2}\frac{\sqrt{2\mu}m^{3 /2 }}{6\hbar^{3}}
+        \end{equation}
+        再根据小增量定理写出自由能的表达式:
+        \begin{equation}
+          F=F_0-\frac{g\beta}{4}NT^{2}n^{2 /3}
+        \end{equation}
+        这里为了方便引入符号
+        \[\beta=(\dfrac{\pi}{3})^{2 /3}\frac{m}{\hbar^{2}}\]
+        由此得到气体的熵:
+        \begin{equation}
+          S=\frac{g}{2}\beta N T~  n^{-2 / 3}
+        \end{equation}
+        气体热容:
+        \begin{equation}
+          C=\frac{g}{2}\beta NT~n^{-2 /3}
+        \end{equation}
+        能量:
+        \begin{equation}
+          E=E_0+\frac{g\beta}{4}NT^{2}~n^{-2 / 3}
+        \end{equation}
+      \item[II]
+        第二种方法是构造合适的函数再泰勒展开:
+
+        积分:
+        \[I=\int_{0}^{\infty} \frac{f(\varepsilon)}{e^{(\varepsilon-\mu)/T}+1} \, \mathrm{d}\varepsilon\]
+        这里$f(\varepsilon)=\varepsilon^{1 / 2} \quad \text{or} \quad \varepsilon^{3 /2}$.作代换,令$(\varepsilon-\mu)/T=x$.积分变成
+        \[I=\int_{\alpha}^{\infty}\dfrac{f(\mu+Tx)}{e^{x}+1}T\mathrm{d} x=T\int_0 ^{\mu / T}\dfrac{f(\mu-Tx)}{e^{-x}+1}\mathrm{d} x+T\int_0^{\infty}\dfrac{f(\mu+Tx)}{e^{x}+1}\mathrm{d} x\]
+        在前一项中利用
+        \[\dfrac{1}{e^{-x}+1}=1-\dfrac{1}{e^{x}+1}\]
+        得到:
+        \[I=\int_0^{\mu}f(\varepsilon)\mathrm{d} \varepsilon-T\int_0^{\mu / T}\dfrac{f(\mu-Tx)}{e^{x}+1}\mathrm{d} x+T\int_0 ^{\infty}\dfrac{f(\mu+Tx)}{e^{x}+1}\mathrm{d} x\]
+        在第二项中,利用$\frac{\mu}{T}\gg 1$的特性,把积分上限改成正无穷.(这里不止使用了积分上限很大这一条件,更多的是积分上限远大于积分的"收敛半径"<--这个说得及其不准确,因为这个收敛半径指的是这个半径之外得积分区域对这个积分值没有显著贡献)
+        \[I=\int_0 ^{\mu}f(\varepsilon)\mathrm{d}\varepsilon+T\int_0^{\infty}\dfrac{f(\mu+Tx)-f(\mu-Tx)}{e^{x}+1}\mathrm{d} x \]
+        接下来把积分第二项对$T$展开成泰勒级数:
+        \[I=\int_0^{\mu}f(\varepsilon)\mathrm{d} \varepsilon+2T^{2}f'(\mu)\int_0^{\infty}\dfrac{z\mathrm{d} z}{e^{z}+1}+\frac{1}{3}T^{4}f'''(\mu)\int_0^{\mu}\dfrac{z^{3}\mathrm{d} z}{e^{z}+1}+ \cdots \]
+        把各个积分的值积出来之后代入上式,得到:
+        \begin{equation}
+          I=\int_0^{\mu}f(\varepsilon)\mathrm{d} \varepsilon +\frac{\pi^{2}}{6}T^{2}f'(\mu)+\frac{7\pi^{4}}{360}T^{4}f'''(\mu)+ \cdots 
+          \label{eq:4.35}
+        \end{equation}
+        在公式\eqref{eq:4.35}中令$f=\varepsilon^{\frac{3}{2}}$再代入\eqref{eq:4.22},得到巨势在低温下的展开:
+        \begin{equation}
+          J=J_0-\frac{gVT^{2}}{2}\frac{\sqrt{2\mu}m^{3 /2 }}{6\hbar^{3}}
+        \end{equation}
+        之后便是相同的了.
+    \item[III]
+        第三种方法基于$-\dfrac{\mathrm{d}  f}{\mathrm{d}  \varepsilon}$具有类似$\delta$函数的性质.这里$f$是费米分布函数.
+
+        记$\varepsilon \sim \varepsilon+\mathrm{d} \varepsilon$内的量子态数目为$\dfrac{\mathrm{d}\Gamma}{\mathrm{d} \varepsilon}\cdot \mathrm{d} \varepsilon$.
+        则确定总能量的方程为:
+        \begin{equation}
+          E=\int_{0}^{\infty} f(\varepsilon) \varepsilon\cdot\dfrac{\mathrm{d}\Gamma}{\mathrm{d} \varepsilon} \mathrm{d}\varepsilon
+          \label{eq:4.42}
+        \end{equation}
+        现在引入新函数:
+        \begin{equation}
+          Q(\varepsilon)=\int_{0}^{\varepsilon} \varepsilon \dfrac{\mathrm{d}\Gamma}{\mathrm{d} \varepsilon} \mathrm{d}\varepsilon
+        \end{equation}
+        即$Q(\varepsilon)$表示$\varepsilon$以下的量子态被填满时的能量.对\eqref{eq:4.42}右侧分部积分,得到:
+        \[E=\left.f(\varepsilon)Q(\varepsilon)\right|_0^{\infty}+\int_{0}^{\infty} Q(\varepsilon)\left( -\dfrac{\mathrm{d}  f}{\mathrm{d}  \varepsilon} \right)  \mathrm{d}\varepsilon\]
+        前一项为0,因此:
+        \begin{equation}
+          E=\int_{0}^{\infty} Q(\varepsilon)\left( -\dfrac{\mathrm{d}  f}{\mathrm{d}  \varepsilon} \right)  \mathrm{d}\varepsilon
+        \end{equation}
+        把$Q(\varepsilon)$在$\mu$附近展开成级数.
+        \[Q(\varepsilon)=Q(\mu)+Q'(\mu)(\varepsilon-\mu)+ \frac{1}{2}Q''(\mu)\left( \varepsilon-\mu \right) ^{2}+\cdots \]
+        回代积分,得到 
+        \begin{align*}
+          E=Q(\mu)\int_{0}^{\infty} \left( -\dfrac{\mathrm{d}  f}{\mathrm{d}  \varepsilon} \right)  \mathrm{d}\varepsilon~+~Q'(\mu)\int_{0}^{\infty} (\varepsilon-\mu)\left( -\dfrac{\mathrm{d}  f}{\mathrm{d}  \varepsilon} \right)  \mathrm{d}\varepsilon~\\ 
+          +~\frac{1}{2}Q''(\mu)\int_{0}^{\infty} (\varepsilon-\mu)^{2}\left( -\dfrac{\mathrm{d}  f}{\mathrm{d}  \varepsilon} \right)  \mathrm{d}\varepsilon + \cdots
+        \end{align*}
+        第一项$f(0)-f(\infty)=1$,第二项等于零(利用$-\dfrac{\mathrm{d}f}{\mathrm{d} \varepsilon}$类似于$\delta$函数的性质).对第二个积分做换元$\xi=\dfrac{\varepsilon-\mu}{T}$,并利用$\dfrac{\mu}{T}\gg 1$,将积分下限改成$-\infty$,得到:
+        \[E=Q(\mu)+\frac{T^{2}}{2}Q''(\mu)\int_{-\infty}^{\infty} \frac{\xi^{2}e^{\xi}}{(e^{\xi}+1)^{2}} \mathrm{d}\xi
+        \]
+        其中的定积分:
+        \[\int_{-\infty}^{\infty} \frac{\xi^{2}e^{\xi}}{(e^{\xi}+1)^{2}} \mathrm{d}\xi=\frac{\pi^{2}}{3}
+        \footnote{
+          \text{这个积分的计算是简单的:首先注意到它是偶函数,于是化成两倍从0到$\infty$的积分.再利用分布积分变成:}
+          \[4\int_{0}^{\infty
+          } \frac{x}{1+e^{x}} \mathrm{d} x=4\cdot \frac{\pi^{2}}{12}=\frac{\pi^{2}}{3}\]
+        }
+        \]
+        于是 
+        \begin{equation}
+          E=Q(\mu)+\frac{\pi^{2}}{6}Q''(\mu)T^{2}
+        \end{equation}
+        再把$\mu$展开(对$Q''(\mu)$却只保留到$\varepsilon_F$):
+        \begin{equation}
+          E=Q(\varepsilon_F)+Q'(\varepsilon_F)(\mu-\varepsilon_F)+\frac{\pi^{2}}{6}Q''(\varepsilon_F)T^{2}
+        \end{equation}
+        我们还需要$\mu$的展开,若定义一个新的函数:$R=\displaystyle \int_{0}^{\varepsilon} \dfrac{\mathrm{d} \Gamma}{\mathrm{d} \varepsilon} \mathrm{d}\varepsilon$,就可以用完全相同的方法得到:
+        \begin{equation}
+          N=R(\varepsilon_F)+R(\varepsilon_F)(\mu-\varepsilon_F)+\frac{\pi^{2}}{6}R''(\varepsilon_F)T^{2}
+        \end{equation}
+        利用$N=R(\varepsilon_F)$得到化学势:
+        \begin{equation}
+          \mu=\varepsilon_F-\frac{\pi^{2}}{6}T^{2} \left[ \dfrac{\mathrm{d}}{\mathrm{d} \varepsilon}\ln R'(\varepsilon) \right] =\varepsilon_F-\frac{\pi^{2}}{12}\frac{T^{2}}{\varepsilon_F}
+        \end{equation}
+        利用$Q(\varepsilon)=\frac{4\pi g}{5h^{3}}V (2m)^{3 /2}\varepsilon^{5 /2}$于是能量等于:
+        \begin{equation}
+          E=E_0\left(1+\frac{5\pi^{2}T^{2}}{12\varepsilon_F^{2}}\right)
+        \end{equation}
+        于是热容等于:
+        \begin{equation}
+          C=\frac{5\pi^{2}E_0}{6\varepsilon_F^{2}}T
+        \end{equation}
+        
+
+    \end{itemize}
+\subsection{简并电子气的磁性.弱场}
+    电子气体的磁化强度由两部分构成:一部分是\emph{泡利顺磁性}即与电子内禀磁矩有关的顺磁性;另一部分是\emph{朗道抗磁性}即由电子在磁场中的轨道运动量子化有关的抗磁性.弱场条件表明$\mu_B H \ll T$, 其中$\mu_B=\frac{e\hbar}{2mc}$是玻尔磁子.
+
+    系统能量$\varepsilon=\frac{p^{2}}{2m}\pm \mu_B H$.与没有外磁场时只相差一个$\pm \mu_B H$. 则所有的热力学公式只需把$\mu$替换成$\mu\mp \mu_BH$即可.于是得到巨势:
+    \[J=\frac{1}{2}\left(J_0(\mu+\mu_BH)+J_0(\mu-\mu_BH)\right)\]
+    式中$J_0$是没有外场的巨势.在弱场条件下把外场相关势能展开,得到顺磁磁化率
+    \begin{equation}
+      J(\mu)=J_0+\frac{1}{2}\mu_B^{2}H^{2}\frac{\partial^2 J_0(\mu)}{\partial \mu^2}
+    \end{equation}
+    利用磁矩的关系式$m=-\left( \dfrac{\partial J}{\partial H} \right) _{T,V\mu}$,得到:
+    \begin{equation}
+      \mathcal{X}_{para}=-\frac{\mu_B^{2}}{V}\frac{\partial^2 J_0}{\partial \mu^2}=\frac{\mu_B^{2}}{V}\left( \dfrac{\partial N}{\partial \mu} \right) _{T,V}.
+    \end{equation}
+    忽略温度很小时的修正,有:
+    \[N=V\frac{(2m\mu)^{3 /2}}{(3\pi^{2}\hbar^{3})}\]
+    于是得到顺磁磁化率:
+    \begin{equation}
+      \mathcal{X}_{para}=\frac{\mu_B^{2}p_Fm}{\pi^{2}\hbar^{3}}
+    \end{equation}
+
+    接下来分析朗道抗磁磁化率. 电子在磁场中轨道运动的能级由下式给出:
+    \[\varepsilon=\frac{p_z^{2}}{2m}+(2n+1)\mu_BH\]
+    对每个给定的$n$在间隔$\mathrm{d} p_z$内的状态数为:
+    \[2\frac{Ve H}{(2\pi\hbar)^{2}c}\mathrm{d} p_z\]
+    式中因子2来源于自旋的两个方向.巨势$J$的表达式$J=-T\ln\Xi$写为:
+    \begin{equation}
+      J=2\mu_BH\sum_{n=0}^{\infty}\left\{ -\frac{TmV}{2\pi^{2}\hbar^{3}}\int_{-\infty}^{\infty} \ln\left[ 1+\exp(\frac{\mu}{T}-\frac{p_z^{2}}{2mT}) \right]  \mathrm{d}p_z \right\} 
+    \end{equation}
+    为方便记\[f(\mu)=-\frac{TmV}{2\pi^{2}\hbar^{3}}\int_{-\infty}^{\infty} \ln\left[ 1+\exp(\frac{\mu}{T}-\frac{p_z^{2}}{2mT}) \right]  \mathrm{d}p_z\]
+    借助著名的欧拉-麦克劳林公式:
+    \begin{equation}
+      \sum_{n=0}^{\infty}F(n+\frac{1}{2})\approx \int_{0}^{\infty} F(x) \mathrm{d}x+\frac{1}{24}F'(0)
+    \end{equation}
+    这个公式适用条件在于函数$F$的$n\to n+1$的单步相对变化很小.在应用于此式时即为$\mu_B\ll T$.
+    \[J=2\mu
+    _BH\int_{0}^{\infty} f(\mu-2\mu_BHx) \mathrm{d}x+\frac{2\mu_BH}{24}\dfrac{\partial f(\mu-2n\mu_BH)}{\partial n}_{n=0}=\int_{-\infty}^{\mu} f(x) \mathrm{d}x-\frac{(2\mu_BH)^{2}}{24}\dfrac{\partial f(\mu)}{\partial \mu}\]
+    第一项不含$H$,它是没有外场下的巨势.于是:
+    \begin{equation}
+      J=J_0-\frac{1}{6}(\mu_BH)^{2}\frac{\partial^2 J_0}{\partial \mu^2}
+    \end{equation}
+    由此得到抗磁性磁化率\footnote{这个关系式适用于任意程度的简并}:
+    \begin{equation}
+      \mathcal{X}_{dia}=\frac{\mu_B^{2}}{3V}\frac{\partial^2 J_0}{\partial \mu^2}=-\frac{1}{3}\mathcal{X}_{para}
+    \end{equation}
+    即气体整体上是顺磁的,有磁化率$\mathcal{X}=\frac{2}{3}\mathcal{X}_{para}$
+
+\subsection{简并电子气的磁性.强场}
+    现在考虑这样条件的场:
+    \[T \lesssim \mu_BH\ll\mu\]
+    在这样的条件下,轨道运动的量子化效应何自旋效应必须同时考虑.我们将看到,这种情况下电子气的磁性将含有作为$H$的函数的大振幅振荡部分.在后面的推导中我们将大胆地扔掉非振荡项,这里也会给出一些convincing的分析(.
+    
+    电子的能级写成:
+    \[\varepsilon=\frac{p_z^{2}}{2m}+(2n+1)\mu_BH \pm \mu_BH\quad (n=1,2\cdots )\]
+    或者
+    \[\varepsilon=\frac{p_z^{2}}{2m}+2n\mu_BH\quad (n=0,1\cdots)\]
+    注意到$n=0$的态是不简并的,而所有$n>1$的态简并度都是2.则此时巨势的表达式等于:
+    \begin{equation}
+      J=2\mu_BH\left\{ \frac{1}{2}f(\mu)+\sum_{n=1}^{\infty} f(\mu-2\mu_BHn) \right\} 
+    \end{equation}
+    利用泊松公式:
+    \footnote{该公式由一下等式得出:\[\sum_{n=-\infty}^{n=\infty}\delta(x-n)=\sum_{k=-\infty}^{\infty}e^{2\pi ikx}.\]等式乘上任意函数$F(x)$随后对$x$积分从$0$到$\infty$即可,注意:$\frac{1}{2}F(0)$是$\int_{0}^{\infty}F(x)\delta(x)\mathrm{d} x$的积分结果.}
+
+    \begin{equation}
+      \frac{1}{2}F(0)+\sum_{n=1}^{\infty}F(n)=\int_{0}^{\infty} F(x) \mathrm{d}x+2\Re \sum_{k=1}^{\infty}\int_{0}^{\infty} F(x)e^{2\pi i kx} \mathrm{d}x
+    \end{equation}
+    对做变换,变换后成为:
+    \[J=J_0+\frac{TmV}{\pi^{2}\hbar^{3}}\Re \sum_{k=1}^{\infty}I_k\]
+    式中 
+    \begin{equation}
+      I_k=-2\mu_BH\int_{-\infty}^{\infty} \int_{0}^{\infty} \ln\left[ 1+\exp(\frac{\mu}{T}-\frac{p_z^{2}}{2mT}-\frac{2x\mu_BH}{T}) \right] e^{2\pi ikx} \mathrm{d}x \mathrm{d} p_z
+    \end{equation}
+    在积分中做换元$\varepsilon=\dfrac{p_z^{2}}{2m}+2x\mu_BH$:
+    \[I_k=-\int_{-\infty}^{\infty} \int_{\frac{p_z^{2}}{2m}}^{\infty} \ln(1+\exp\frac{\mu-\varepsilon}{T})\exp(\frac{i\pi k\varepsilon}{\mu_BH})\exp(-\frac{i\pi kp_z^{2}}{2m\mu_BH}) \mathrm{d}\varepsilon \mathrm{d}p_z\]
+    这里先分析一下这个函数大概的变化趋势:$\ln$函数内部是$1+\exp$函数.在$x$比较小时(都不需要很小),整个$\ln$函数都基本会退化成一个线性函数.而在$x$比较大时(也不需要很大),整个函数都贴在$x$轴上.这两个状态的切换十分迅速,只在临界点($\ln$括号内部为1的点)附近有一点偏离.(这得益于$\mu_BH \gtrsim T$)
+
+    在这里,我们需要和朗道一般野蛮地把积分下限改成0(替代$\dfrac{p_z^{2}}{2m}$),它对积分的贡献不大(由于我们提前知道了磁性是振荡的,而振荡相关的主要贡献发生在$\mu$附近的地方)\footnote{我们可以这么看这个结论:在$x$小于临界点处,积分函数近似于$(a-x)\sin x$而在$x$比较小的区域振荡十分剧烈导致相消,于是只有临界点附近振荡不够剧烈的区域有显著的贡献}.这样对$\varepsilon$和对$p_{z}$的积分就分离开了.对$p_{z}$的积分给出:
+    \[\int_{-\infty}^{\infty} e^{i\alpha p^{2}} \mathrm{d}p=e^{-i\pi / 4} \sqrt{\frac{\pi}{\alpha}}\]
+    这个可由换元$p=e^{-i\pi / 4}u$再对实值$u$从$-\infty$积到$\infty$得出.
+
+    计算之后得到:
+    \[I_k=-e^{i\pi / 4}\sqrt{\frac{2m\mu_BH}{k}}\int_{0}^{\infty} \ln\left[ 1+\exp\left( \mu-\varepsilon \right) /T \right] e^{i\pi k \varepsilon /\mu_BH} \mathrm{d}\varepsilon\]
+    在这个积分中做两次分部积分,得到:
+    \[I_k=-e^{i\pi / 4}\sqrt{\frac{2m\mu_BH}{k}}\cdot\left\{ \mu_\frac{BH}{i\pi k}\left[ \ln(1+e^{\frac{\mu}{T}})+\frac{1}{T}\cdot \frac{\mu_BH}{i\pi k}\left( \frac{1}{1+e^{-\frac{\mu}{T}}}+\frac{1}{T}\int_{0}^{\infty} \frac{e^{(\varepsilon-\mu)/T}}{(1+e^{(\varepsilon-\mu)/T})^{2}}e^{i \pi k \varepsilon / \mu_BH} \mathrm{d}\varepsilon \right)  \right]  \right\} \]
+    把常数都扔掉,并作代换$\dfrac{\varepsilon-\mu}{T}=\xi$,式子变成:
+    \[I_k=\frac{\sqrt{2m}(\mu_BH)^{2}}{T\pi^{2}k^{5 / 2}}\exp(\frac{i\pi k\mu}{\mu_BH}-\frac{i \pi}{4})\int_{-\frac{\mu}{T}}^{\infty} \frac{e^{\xi}}{(e^{\xi}+1)^{2}}\exp(\frac{i\pi k T}{\mu_BH}\xi) \mathrm{d}\xi\]
+    $\xi$的积分下限是$-\mu / T$,利用条件把它换成$-\infty$.由于函数$\frac{e^{x}}{(1+e^{x})^{2}}$的特性,只有在零附近才显著地不等于零,于是我们可以判断:在$\xi\approx 1$附近也即$\varepsilon$在$\mu$附近的区域对积分起显著作用.
+
+    积分 \[\int_{-\infty}^{\infty} \frac{e^{\xi}}{(e^{\xi}+1)^{2}} e^{i\alpha\xi}\mathrm{d}\xi=\frac{\pi \alpha}{\sinh \pi\alpha}\]
+    \footnote{这个积分需要用留数定理}
+    最后对$J$的振荡部分求和,得到:
+    \begin{equation}
+      J=\frac{\sqrt{2}(m\mu_BH)^{3 / 2}TV}{\pi^{2}\hbar^{3}}\sum_{k=1}^{\infty}\frac{\cos(\frac{\pi \mu}{\mu_BH}k-\frac{\pi}{4})}{k^{3 / 2}\sinh (\pi^{2}kT /\mu_BH)}
+    \end{equation}
+    上式对$H$求偏导得到磁矩,只需对变化最快的因子即和式中的各项分子中的余弦求导.这给出:
+    \begin{equation}
+      m=-\frac{\sqrt{2\mu_B}m^{3 /2}\mu TV}{\pi\hbar^{3}\sqrt{H}}\sum_{k=1}^{\infty}\frac{\sin(\frac{\pi \mu}{\mu_BH}k-\frac{\pi}{4})}{\sqrt{k}\sinh(\pi^{2}kT / \mu_BH)}
+    \end{equation}
+    这个函数以一个很高的频率振荡.它以$\frac{1}{H}$为变量的周期是与温度无关的常数.
+    \begin{equation}
+      \Delta \frac{1}{H}=\frac{2\mu_B}{\mu}
+    \end{equation}
+
+    在$\mu_BH \simeq T$时,磁矩的振幅$\tilde{m}\simeq V\mu H^{1 /2}(m\mu_B)^{3 /2} \hbar^{-3}$,磁矩的单调部分由上节的磁化率决定,为$\bar{m}\simeq V \mu^{1 /2} H m^{3 /2}\mu_B^{2}\hbar^{-3}$.因而,$\tilde{m} / \bar{m}\simeq (\mu / \mu_BH)^{1 /2}$.
+
+
+
+\subsubsection{相对论性简并费米气体}
+    费米气体的能量随着气体被压缩而增加,当能量和$mc^{2}$相当时,相对论效应不可忽略.这里考察极端相对论性费米气体,即能量动量关系为:
+    \[\varepsilon=pc.\]
+    边界动量变为:
+    \begin{equation}
+      p_F=(3\pi^{2}n)^{1 /3}\hbar
+    \end{equation}
+    相应的气体总能量为:
+    \begin{equation}
+      E=\frac{3(3\pi^{2}n)^{1 /3}}{4}\hbar c N
+    \end{equation}
+    绝热过程方程:
+    \begin{equation}
+      PV^{\frac{4}{3}}=\operatorname{const}
+    \end{equation}
+\subsection{简并玻色气体}
+    低温下,所有玻色子会聚集到能量最低的点上去,使得所有原子凝聚在最低态上,形成\emph{玻色-爱因斯坦凝聚(BEC)}.
+
+    玻色子的化学势永远是负的,随着温度的降低,化学势的绝对值逐渐减小,并趋近于零,化学势等于零时的温度取决于等式:
+    \begin{equation}
+      n=\frac{g(mT)^{3 /2}}{\sqrt{2}\pi^{2}\hbar^{3}}\int_{0}^{\infty} \frac{\sqrt{x}}{e^{x}-1} \, \mathrm{d}x
+    \end{equation}
+    把这个积分积出,得到:
+    \begin{equation}
+      T_0=\frac{h^{2}}{2\pi m}\left( \frac{n}{2.612} \right)^{\frac{2}{3}} 
+    \end{equation}
+    仔细思考,不难想到发生BEC的条件是在$\mu=0$的条件下,积分式有$T>0$的解.
+
+    在$T<T_0$的情况下,能量$\varepsilon>0$的粒子按照$\mu=0$的情况分布.所以$\varepsilon>0$的粒子总数为:
+    \begin{equation}
+      N_{\varepsilon>0}=\frac{g(mT)^{3 /2}V}{\sqrt{2}\pi^{2}\hbar^{3}}\int_{0}^{\infty} \frac{\sqrt{x}}{e^{x}-1} \, \mathrm{d}x=N\left( \frac{T}{T_0} \right) ^{\frac{3}{2}}
+    \end{equation}
+    于是我们知道处于最低能级的粒子数为:
+    \begin{equation}
+      N_{\varepsilon=0}=N\left[ 1-\left( \frac{T}{T_0} \right) ^{\frac{3}{2}} \right]  
+    \end{equation}
+    温度$T<T_0$时气体总能量为:
+    \[E=\frac{gVm^{3 /2}T^{5 /2}}{\sqrt{2}\pi^{2}\hbar^{3}}\int_{0}^{\infty} \frac{x^{\frac{3}{2}}}{e^{x}-1} \, \mathrm{d}=\frac{gVm^{3 /2}T^{5 /2}}{\sqrt{2}\pi^{2}\hbar^{3}}\zeta(\frac{5}{2})\]
+    相应的可以求出其他物理量.如:
+    \[C_v=\frac{5E}{2T}\]
+    与熵:
+    \[S=\frac{5E}{3T}\]
+    但值得注意的是,热容对温度的导数在$T_0$处有一个跃变.这实际上是一个二级相变,在考虑的气体完全理想时,这个跃变值是一个有限量.只要我们考虑一点点相互作用都会使其成为真正的二级相变.
+
+    在$T<T_0$的温度处,压强:
+    \[P=-\left( \dfrac{\partial F}{\partial V} \right) _T=0.0851g\frac{m^{3 /2}T^{5/2}}{\hbar^{3}}\]
+    和粒子数密度无关.这种性质让我们联想到气液共存的时候压强和体积无关的场景.而且在完全不考虑任何相互作用时,液体的体积会消失在0处.借助克拉珀龙方程,我们可以计算出它的潜热:
+    \[\dfrac{\mathrm{d}T}{\mathrm{d} P}=\frac{T_0v}{L}\]
+    得到 
+    \[L=\frac{5}{2}Pv\approx 1.28T_0\]
+
+\subsection{黑体辐射}
+    这一节讨论热平衡的黑体辐射.黑体辐射场可以看成光子气体(这主要得益于电磁场方程的线性).
+
+    光子气体的粒子数并不守恒,于是其就不存在化学势,即 
+    \[\mu=0\]
+    于是光子按能量的分布函数为:
+    \begin{equation}
+      n_\omega=\frac{1}{e^{\hbar \omega}-1}
+    \end{equation}
+    这就是所谓普朗克分布.
+
+    利用光子频率在$\omega$与$\omega +\mathrm{d}  \omega$之间的状态数:
+    \[\mathrm{d} \Gamma=\frac{V\omega^{2}}{\pi^{2}c^{3}}\mathrm{d} \omega\]
+    得到频率在此区间的辐射能:
+    \begin{equation}
+      \mathrm{d} E=\frac{V\hbar}{\pi^{2}c}\frac{\omega^{3}\mathrm{d} \omega}{e^{\frac{\hbar\omega}{T}}-1}
+    \end{equation}
+    被称为\emph{普朗克公式}
+    黑体辐射能量的频谱分布密度在$\omega=\omega_m$处取到最大值.$\omega_m$由下式确定:
+    \[\frac{\hbar \omega}{T}\approx 2.822\]
+    完成能谱的积分,得到气体总能量为:
+    \begin{equation}
+      E=\frac{\pi^{2}VT^{4}}{15\hbar^{3}c}
+    \end{equation}
+    斯特藩-波尔兹曼常量$\sigma$定义为:
+    \[\sigma=\frac{\pi^{2}k^{4}}{60\hbar^{3}c^{2}}\]
+    这里$k$是玻尔兹曼常量,只有在开尔文量度下才会出现.
+    光子气体的自由能为:
+    \begin{equation}
+      F=-\frac{4\sigma}{3c}VT^{4}
+    \end{equation}
+    熵:
+    \begin{equation}
+      S=-\dfrac{\partial F}{\partial T}=\frac{16\sigma}{3c}VT^{4}
+    \end{equation}
+    能量:
+    \begin{equation}
+      E=\frac{4\sigma}{c}VT^{4}=-3F
+    \end{equation}
+    等等热力学量.
