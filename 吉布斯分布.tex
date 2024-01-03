@@ -85,7 +85,7 @@
   
   同样,焓$H=E-\mathbf{x}\cdot \mathbf{J}$的公式为:
   \begin{equation}
-    H=-\dfrac{\partial }{\partial \beta}\ln Z
+    H=-\beta\dfrac{\partial }{\partial \beta}\ln Z
   \end{equation}
 
 
@@ -126,19 +126,19 @@
 \[S=- \left< \ln\rho_{nN} \right> =-\ln A -\dfrac{\mu \bar{N}}{T}+\dfrac{\bar{E}}{T} \]
 由此得出:
 \[T \ln A= \bar{E} - TS - \mu \bar{N}\]
-而$\Omega=\bar{E}-TS -\mu \bar{N}$(这里$\Omega$是巨热力学势,简称巨势\emph{grand potential})代入表达式,最后得到:
+而$J=\bar{E}-TS -\mu \bar{N}$(这里$J$是巨热力学势,简称巨势\emph{grand potential})代入表达式,最后得到:
 \begin{equation}
-  \rho_{nN}=\exp(\dfrac{\Omega +\mu N -E_{nN}}{T})
+  \rho_{nN}=\exp(\dfrac{J +\mu N -E_{nN}}{T})
 \end{equation}
 这就是这个可变粒子数的吉布斯分布的最终表达式.这个分布有时候也被称为巨正则分布.
 
 利用分布(2.7)的归一化条件,即 
-\[\sum_n\sum_N \rho_{nN}=e^{\Omega / T}\sum_N\left( e^{\mu N / T} \sum_n e^{-E_{nN} / T} \right) =1 \]
-得到巨势$\Omega$的表达式:
+\[\sum_n\sum_N \rho_{nN}=e^{J / T}\sum_N\left( e^{\mu N / T} \sum_n e^{-E_{nN} / T} \right) =1 \]
+得到巨势$J$的表达式:
 \begin{equation}
-  \Omega= -T \ln\sum_N\left[ e^{\mu N / T}\sum_ne^{-E_{nN} / T} \right] 
+  J= -T \ln\sum_N\left[ e^{\mu N / T}\sum_ne^{-E_{nN} / T} \right] 
 \end{equation}
-此公式给出巨势$\Omega$关于$T,\mu , V$的函数,从而得到整个系统的其他热力学量.
+此公式给出巨势$J$关于$T,\mu , V$的函数,从而得到整个系统的其他热力学量.
 
 引入巨配分函数$\Xi$定义为 :
 \begin{equation}
@@ -156,9 +156,3 @@
 内能:\[\bar{E}=\sum_N \sum_n E \rho_{nN}=-\dfrac{\partial \ln \Xi}{\partial \beta}\]
 熵:\[S = -\Omega/T+\bar{E}/T -\mu \bar{N} /T=\ln \Xi-\beta\dfrac{\partial \ln\Xi}{\partial \beta}-\alpha\dfrac{\partial \ln\Xi}{\partial \alpha}\]
 
-
-\subsection{算例:振子的概率分布}
-  考虑振子:其能量可以写成:
-  \begin{equation}
-    E= \hbar \omega (n+\frac{1}{2})
-  \end{equation}

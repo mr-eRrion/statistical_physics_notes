@@ -183,8 +183,69 @@
       \left[ \dfrac{\partial }{\partial t}-\dfrac{\partial U}{\partial q_1}\cdot \dfrac{\partial }{\partial p_1}+\frac{p_1}{m}\cdot \dfrac{\partial }{\partial q_1} \right] f_1=-\int \mathrm{d} p_2 \mathrm{d} \Omega \left\vert \dfrac{\mathrm{d}\sigma}{\mathrm{d} \Omega} \right\vert \left\vert v_1-v_2 \right\vert \left[ f_1(p_1,q_1;t)\cdot f_1(p_2,q_1;t)-f_1(p_1',q_1';t)\cdot f_1(p_2',q_1;t) \right] 
     \end{equation}
     
-        
-    
+\subsection{H定理和不可逆性}
+    整个相空间的分布密度$\rho_{N}$是时间反演对称的,故它不是一个可以表征平衡态或非平衡态的"好"物理量. 那$\rho_1$也会有同样的性质吗? 很幸运的是, H定理证明了满足玻尔兹曼方程的$\rho_1$确实会以不可逆的方式演化到平衡态.
+    H定理写作:
+    \begin{theorem}
+      如果$f_1$满足玻尔兹曼方程,则$\dfrac{\mathrm{d}H}{\mathrm{d} t}\le 0$,这里H函数为:
+      \begin{equation}
+        H(t)=\int \mathrm{d} p_1 \mathrm{d} q_1 ~f_{1}(p_1,q_1;t)\ln f_1(p_1,q_1;t)
+      \end{equation}
+    \end{theorem}
+    \begin{proof}
+      $H$对时间的全倒数为
+      \[\dfrac{\mathrm{d}H}{\mathrm{d} t}=\int \mathrm{d} p_1 \mathrm{d} q_1 \dfrac{\partial f_1}{\partial t}(\ln f_1 +1)=\int \mathrm{d} p_1 \mathrm{d} q_1 \ln f_1 \dfrac{\partial f_1}{\partial t}\]
+      这里利用了$\int \mathrm{d} p_1 \mathrm{d} q_1 f_1=N$不随时间变化的性质.现在代入玻尔兹曼方程.
+      \begin{align*}
+        \dfrac{\mathrm{d}H}{\mathrm{d} t}=&\int \mathrm{d} p_1 \mathrm{d} q_1 \ln f_1 \left( \dfrac{\partial U}{\partial q_1}\cdot \dfrac{\partial f_1}{\partial p_1}-\frac{p_1}{m}\cdot \dfrac{\partial f_1}{\partial q_1} \right) \\
+        &-\int \mathrm{d} p_1 \mathrm{d} q_1 \mathrm{d} p_2 \mathrm{d} \sigma \left\vert v_1-v_2 \right\vert \left[ f_1(p_1,q_1)f_1(p_2,q_1)-f_1(p_1',q_1)f_1(p_2',q_1) \right] \ln f_1 (p_1,q_1)
+      \end{align*}
+      上式中漂移项为0(分部积分可得). 上式中包含了对哑变量$p_1,p_2$的积分,它们的下标可以交换而不引起积分的改变.于是原积分可以写成原积分和交换下标积分的平均,即 
+      \[\dfrac{\mathrm{d}H}{\mathrm{d} t}=-\frac{1}{2}\int \mathrm{d} q \mathrm{d} p_1 \mathrm{d} p_2 \mathrm{d} b \left\vert v_1-v_2 \right\vert \left[ f_1(p_1)f_1(p_2)-f_1(p_1')f_1(p_2') \right]\ln\left( f_1(p_1)f_1(p_2) \right) \]
+      下一步,需要把积分变量从$(p_1,p_2,b)$换到碰撞完的状态$(p_1',p_2',b')$.虽然这两组变量的实际依赖关系非常复杂,但是通过时间反演可逆性可以得到它们变换的雅可比行列式是单位的.于是 
+      \[\dfrac{\mathrm{d}H}{\mathrm{d} t}=-\frac{1}{2}\int \mathrm{d} q \mathrm{d} p_1' \mathrm{d}  p_2' \mathrm{d} b' \left\vert v_1- v_2 \right\vert \left[ f_1(p_1)f_2(p_2)-f_1(p_1')f_1(p_2') \right] \ln(f_1(p_1)f_1(p_2)) \]
+      结合哑变量的变换,再利用弹性碰撞中$\left\vert v_1-v_2 \right\vert =\left\vert v_1'-v_2' \right\vert $,上式改写成
+      \[\dfrac{\mathrm{d}H}{\mathrm{d} t}=-\frac{1}{2}\int \mathrm{d} q \mathrm{d} p_1 \mathrm{d}  p_2 \mathrm{d} b \left\vert v_1- v_2 \right\vert \left[ f_1(p_1')f_2(p_2')-f_1(p_1)f_1(p_2) \right] \ln(f_1(p_1')f_1(p_2')) \]
+      两式取平均,得到
+      \begin{equation}
+        \dfrac{\mathrm{d}H}{\mathrm{d} t}=-\frac{1}{4}\int \mathrm{d} q \mathrm{d} p_1 \mathrm{d} p_2 \mathrm{d} b \left\vert v_1-v_2 \right\vert \left[ f_1(p_1)f_1(p_2)-f_1(p_1')f_1(p_2')\right] \left[ \ln f_1(p_1)f_1(p_2)-\ln f_1(p_1')f_1(p_2') \right] 
+      \end{equation}
+      通过简单的比大小易知,无论$f_1(p_1)f_1(p_2)$和$f_1(p_1')f_1(p_2')$的大小关系,一定有
+      \begin{equation}
+        \dfrac{\mathrm{d}H}{\mathrm{d} t}\le 0
+      \end{equation}
+    \end{proof}
 
+    H定理具有很深刻的内涵.热力学第二定律同样指出了不可逆性并规定了时间的演化方向, 而H定理不仅给出了不可逆性, 更可贵的是它给出了趋于平衡态的速度. H定理最核心的假设是\emph{分子混沌假设}.
 
-    
+\subsection{H定理的一些延申及推论}
+\subsubsection*{分布函数}
+    平衡时应该有$\dfrac{\mathrm{d}H}{\mathrm{d} t}=0$,则 
+    \begin{equation}
+      f_1(p_1,q_1)f_1(p_2,q_1)=f_1(p_1',q_1)f_1(p_2',q_1)
+    \end{equation}
+    这被称为\emph{细致平衡条件}. 式子两侧取对数,得到:
+    \begin{equation}
+      \ln f_1(p_1)+\ln f_1(p_2)=\ln f_1(p_1')+ \ln f_1(p_2')
+    \end{equation}
+    式子两侧是动量的函数,于是$\ln f_1$是由碰撞过程中可加的守恒量构成的.于是一个普遍的解是
+    \begin{equation}
+      \ln f_1= a(q)-\alpha(q) \cdot p -\beta(q) \frac{p^{2}}{2m}
+    \end{equation}
+    再把势能添加到表达式中,这样就得到了
+    \begin{equation}
+      f_1(p,q)=C(q) \exp\left[ -\alpha(q)\cdot p -\beta(q) \left( \frac{p^{2}}{2m}+U(q) \right)  \right] 
+    \end{equation}
+    这个分布被我们称为\emph{局域平衡}.由于它在碰撞时守恒,故其演化不受碰撞项影响,而是由漂移项决定. 其中的归一化常数由方程给出:
+    \begin{equation}
+      \int \mathrm{d} p \mathrm{d} q f_1(p,q)=N
+    \end{equation}
+      
+    举个例子,考察体积为$V$的箱子内的粒子,势场处处为零.归一化常数求出得:
+    \[N=CV\left[ \int_{-\infty}^{\infty} \exp(-\alpha_{i}p_{i}-\beta\frac{p_{i}^{2}}{2m}) \mathrm{d}p_{i} \right] ^{3}=CV\left( \frac{2\pi m}{\beta} \right) ^{3 /2} \exp(\frac{m\alpha^{2}}{2\beta})\]
+    于是最后的分布写成:
+    \[f_1(p,q)=n\left( \frac{\beta}{2\pi m} \right) ^{3 /2}\exp\left[ -\beta(p-p_0)^{2}/2m \right] \]
+    显而易见,这就是归一化的麦克斯韦分布.
+
+\subsubsection*{两种气体之间的平衡}
+    考虑两种不同的气体,之间的相互作用势为$V_{ab}(q_{a}-q_{b})$,
